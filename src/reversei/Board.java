@@ -43,12 +43,11 @@ public class Board {
 		if(canPlay(x, y, nextColor) > 0) { 
 			x++; y++;
 			playingBoard[x][y] = nextColor;
-			SketchyMove m = new SketchyMove(x-1, y-1);
 			
 			for(int dx = -1; dx <= 1; dx++){
 				for(int dy = -1; dy <= 1; dy++){
 					int count = 0;
-					m.changeTo(x-1+dx, y-1+dy);
+					Move m = new Move(x-1+dx, y-1+dy);
 					if(playingBoard[x+dx][y+dy] == -nextColor){
 						count++;
 						while(playingBoard[x+(count+1)*dx][y+(count+1)*dy] == -nextColor){ count++; }
@@ -64,8 +63,6 @@ public class Board {
 			}
 			
 			edges.remove(new Move(x-1,y-1));
-			//System.out.println(new Move(x-1,y-1));
-			//for(Move mv : edges){ System.out.print(mv); } System.out.println("");
 			nextColor = getNextPlayer();
 			return true;
 		} else {

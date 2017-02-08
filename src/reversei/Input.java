@@ -24,4 +24,18 @@ public class Input {
 		}
 		return new Move(line);
 	}
+	
+	public int readMaxTime(){
+		int maxTime = -1;
+		while(maxTime <= 0){
+			System.out.println("Enter maximum time [ms]:");
+			String line = scan.next();
+			try{
+				maxTime = Integer.valueOf(line);
+			} catch (NumberFormatException e){
+				System.out.println("Wrong Format. (Use \"500\", \"2000\"");
+			}
+		}
+		return maxTime;
+	}
 }
